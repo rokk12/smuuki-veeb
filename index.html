@@ -36,6 +36,11 @@
   --rule: rgba(43, 21, 17, .16);
   /* Fixed in both themes: text that sits on the gradient or the red button,
      and the cream the logo file is drawn on. */
+  /* Flavour tints: each fruit's colour fading into strawberry. Used only
+     on the two flavour blocks, kept pale so they stay background. */
+  --mango: #FFD89E;
+  --banana: #FFEEA8;
+  --berry: #FFCFC2;
   --on-accent: #2B1511;
   --logo-bg: #FFF9E6;
   --display: "Bricolage Grotesque", "Trebuchet MS", "Segoe UI", sans-serif;
@@ -51,6 +56,9 @@
   --text: #FFF3DC;
   --muted: #C9A898;
   --rule: rgba(255, 243, 220, .18);
+  --mango: #4F3212;
+  --banana: #4B4017;
+  --berry: #50221C;
 }
 * { box-sizing: border-box; }
 body {
@@ -181,6 +189,8 @@ p { margin: 0; max-width: 44ch; }
   justify-content: space-between;
   text-decoration: none;
 }
+.flavour-mango { background: linear-gradient(120deg, var(--mango) 0%, var(--mango) 45%, var(--berry) 100%); }
+.flavour-banana { background: linear-gradient(120deg, var(--banana) 0%, var(--banana) 45%, var(--berry) 100%); }
 .flavour .go {
   align-self: flex-end;
   font-family: var(--display);
@@ -193,6 +203,7 @@ p { margin: 0; max-width: 44ch; }
 .flavour h3 { font-size: clamp(1.6rem, 3vw, 2.3rem); transition: transform .3s cubic-bezier(.2,.7,.2,1); }
 .flavour:hover h3 { transform: translateY(-8px); }
 .flavour small {
+  opacity: .85;
   display: block;
   font-family: var(--body);
   font-weight: 600;
@@ -224,9 +235,16 @@ p { margin: 0; max-width: 44ch; }
 }
 .rows > li:last-child, .rows > article:last-child { border-bottom: 2px solid var(--rule); }
 .rows > li:hover, .rows > article:hover { padding-left: 12px; }
-.product { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); }
+.products { display: flex; flex-direction: column; gap: 6px; }
+.product {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  gap: 12px 48px;
+  align-items: center;
+  padding: 30px 28px;
+}
 .product h3 { font-size: clamp(1.5rem, 2.6vw, 2rem); }
-.product p.small { margin-top: 6px; font-size: .92rem; color: var(--muted); }
+.product p.small { margin-top: 6px; font-size: .92rem; opacity: .8; }
 .claims {
   list-style: none; margin: 44px 0 0; padding: 0;
   display: grid;
@@ -292,6 +310,33 @@ p { margin: 0; max-width: 44ch; }
 .tile.past b, .tile.past .when, .tile.past .place, .tile.past .leaf .d { text-decoration: line-through; text-decoration-thickness: 2px; }
 .tile.past b, .tile.past .leaf .d { color: var(--muted); }
 .tile.past .leaf .mon { background: var(--muted); }
+.team {
+  list-style: none; margin: 0; padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px 24px;
+}
+.member { display: flex; flex-direction: column; }
+.portrait {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background: var(--panel);
+  color: var(--muted);
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 1.9rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+  transition: background-color .35s ease;
+}
+.member b { font-family: var(--display); font-weight: 700; font-size: 1.15rem; letter-spacing: -0.02em; line-height: 1.2; overflow-wrap: anywhere; }
+.member .role { font-size: .92rem; font-weight: 600; color: var(--muted); margin-top: 3px; }
+.member .bio { font-size: .95rem; margin-top: 10px; }
+.member .bio:empty { display: none; }
 .after { margin-top: 36px; color: var(--muted); }
 .after a { color: var(--text); font-weight: 600; text-decoration-color: var(--red); text-decoration-thickness: 2px; text-underline-offset: 4px; }
 .about { font-size: 1.125rem; line-height: 1.5; margin-bottom: 40px; }
@@ -359,6 +404,8 @@ footer .wrap { display: flex; flex-direction: column; gap: 36px; }
   .flavour { min-height: 160px; padding: 22px 22px; }
   .strip { padding-top: 48px; padding-bottom: 56px; }
   .product, .fair { grid-template-columns: 1fr; }
+  .product { padding: 22px 20px; }
+  .team { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 16px; }
   .claims { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 32px; }
   .tiles { grid-template-columns: 1fr; }
   .step { grid-template-columns: 56px minmax(0, 1fr); }
@@ -406,11 +453,11 @@ footer .wrap { display: flex; flex-direction: column; gap: 36px; }
       <figure class="hero-photo">Tootefoto</figure>
     </div>
     <div class="flavours">
-      <a class="flavour" href="#tooted">
+      <a class="flavour flavour-mango" href="#tooted">
         <span class="go" aria-hidden="true">→</span>
         <h3><small>Maitse</small>Mango-maasika</h3>
       </a>
-      <a class="flavour" href="#tooted">
+      <a class="flavour flavour-banana" href="#tooted">
         <span class="go" aria-hidden="true">→</span>
         <h3><small>Maitse</small>Banaani-maasika</h3>
       </a>
@@ -425,15 +472,15 @@ footer .wrap { display: flex; flex-direction: column; gap: 36px; }
   <section class="view" data-view="tooted">
     <div class="wrap page">
       <h2>Tooted</h2>
-      <div class="rows">
-        <article class="product">
+      <div class="products">
+        <article class="product flavour-mango">
           <h3>Mango-maasika</h3>
           <div>
             <p class="price">38 g · 2,99 €</p>
             <p class="small">Koostisosad: mangopulber, maasikapulber, kookospiimapulber, ksantaankumm (E415).</p>
           </div>
         </article>
-        <article class="product">
+        <article class="product flavour-banana">
           <h3>Banaani-maasika</h3>
           <div>
             <p class="price">38 g · 2,99 €</p>
@@ -478,11 +525,33 @@ footer .wrap { display: flex; flex-direction: column; gap: 36px; }
     <div class="wrap page">
       <h2>Meist</h2>
       <p class="about">Smuuki on õpilasfirma. Meid on neli. Mõtleme retsepti välja, segame pulbri kokku ja müüme selle ise.</p>
-      <ul class="rows">
-        <li class="person"><b>Roger Kranich</b><span>Tegevjuht</span></li>
-        <li class="person"><b>Hanna-Loore Lemmiksoo</b><span>Turundus</span></li>
-        <li class="person"><b>Miia Prüüs</b><span>Finants</span></li>
-        <li class="person"><b>Krete Leopard</b><span>Tootearendus</span></li>
+      <!-- Iga liige: asenda <div class="portrait">..</div> pildiga
+           <img class="portrait" src="..." alt="Nimi"> ja kirjuta kirjeldus <p class="bio"> sisse. -->
+      <ul class="team">
+        <li class="member">
+          <div class="portrait" aria-hidden="true">RK</div>
+          <b>Roger Kranich</b>
+          <span class="role">Tegevjuht</span>
+          <p class="bio"></p>
+        </li>
+        <li class="member">
+          <div class="portrait" aria-hidden="true">HL</div>
+          <b>Hanna-Loore Lemmiksoo</b>
+          <span class="role">Turundusjuht</span>
+          <p class="bio"></p>
+        </li>
+        <li class="member">
+          <div class="portrait" aria-hidden="true">MP</div>
+          <b>Miia Prüüs</b>
+          <span class="role">Finantsjuht</span>
+          <p class="bio"></p>
+        </li>
+        <li class="member">
+          <div class="portrait" aria-hidden="true">KL</div>
+          <b>Krete Leopard</b>
+          <span class="role">Tootearendusjuht</span>
+          <p class="bio"></p>
+        </li>
       </ul>
     </div>
   </section>
@@ -524,7 +593,7 @@ footer .wrap { display: flex; flex-direction: column; gap: 36px; }
     });
   });
   views.forEach(function (v) {
-    v.querySelectorAll('.hero-copy > p, .hero-copy > .btn, .strip, .rows > *, .claims, .after, .about').forEach(function (el, i) {
+    v.querySelectorAll('.hero-copy > p, .hero-copy > .btn, .strip, .rows > *, .products > *, .team > *, .claims, .after, .about').forEach(function (el, i) {
       el.setAttribute('data-rise', '');
       el.style.setProperty('--i', i);
     });
