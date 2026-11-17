@@ -33,10 +33,10 @@
   --muted: #6E5148;
   --red: #FE3933;
   --orange: #FF8F4D;
-  /* Cool accent: the colour-wheel opposite of the logo's orange (#FF8F4D, hue 22° -> 202°).
+  /* Cool accent: a sea-green teal (hue 172°), greener than the logo orange's exact opposite.
      Lines, numbers, links. Red stays the action colour. */
-  --blue: #0070B2;
-  --blue-block: #0070B2;
+  --blue: #007A6A;
+  --blue-block: #007A6A;
   --on-blue: #FFF9E6;
   --rule: rgba(43, 21, 17, .16);
   /* Fixed in both themes: text that sits on the gradient or the red button,
@@ -60,8 +60,8 @@
   --panel: #2F1B15;
   --text: #FFF3DC;
   --muted: #C9A898;
-  --blue: #4DBDFF;
-  --blue-block: #005080;
+  --blue: #33CCB8;
+  --blue-block: #006658;
   --on-blue: #FFF3DC;
   --rule: rgba(255, 243, 220, .18);
   --mango: #4F3212;
@@ -183,10 +183,10 @@ p { margin: 0; max-width: 44ch; }
 .hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; }
 .hero-bg::after {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(to bottom, rgba(0, 32, 51, .72) 0%, rgba(0, 32, 51, .42) 32%, rgba(0, 32, 51, .5) 100%);
+  background: linear-gradient(to bottom, rgba(0, 46, 40, .72) 0%, rgba(0, 46, 40, .42) 32%, rgba(0, 46, 40, .5) 100%);
 }
 :root[data-mode="dark"] .hero-bg::after {
-  background: linear-gradient(to bottom, rgba(0, 20, 31, .8) 0%, rgba(0, 20, 31, .55) 32%, rgba(0, 20, 31, .62) 100%);
+  background: linear-gradient(to bottom, rgba(0, 31, 27, .8) 0%, rgba(0, 31, 27, .55) 32%, rgba(0, 31, 27, .62) 100%);
 }
 /* Avalehel pole eraldi ülariba: logo ja menüü on pildi peal, menüüpunktid on nupud. */
 /* Avalehel on ülariba pildi peal: sama paigutus mis teistel lehtedel,
@@ -195,7 +195,7 @@ body[data-view="avaleht"] .bar {
   position: absolute; top: 0; left: 0; right: 0; z-index: 5;
   border-top: 0;
   color: #FFF9E6;
-  background: rgba(0, 32, 51, .5);
+  background: rgba(0, 46, 40, .5);
   border-bottom: 1px solid rgba(255, 249, 230, .16);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
