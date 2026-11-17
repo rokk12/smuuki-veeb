@@ -33,9 +33,10 @@
   --muted: #6E5148;
   --red: #FE3933;
   --orange: #FF8F4D;
-  /* Cool accent against the warm palette: lines, numbers, links. Red stays the action colour. */
-  --blue: #3B52D9;
-  --blue-block: #3B52D9;
+  /* Cool accent: the colour-wheel opposite of the logo's orange (#FF8F4D, hue 22° -> 202°).
+     Lines, numbers, links. Red stays the action colour. */
+  --blue: #0070B2;
+  --blue-block: #0070B2;
   --on-blue: #FFF9E6;
   --rule: rgba(43, 21, 17, .16);
   /* Fixed in both themes: text that sits on the gradient or the red button,
@@ -59,8 +60,8 @@
   --panel: #2F1B15;
   --text: #FFF3DC;
   --muted: #C9A898;
-  --blue: #93A4FF;
-  --blue-block: #26348F;
+  --blue: #4DBDFF;
+  --blue-block: #005080;
   --on-blue: #FFF3DC;
   --rule: rgba(255, 243, 220, .18);
   --mango: #4F3212;
@@ -182,10 +183,10 @@ p { margin: 0; max-width: 44ch; }
 .hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; }
 .hero-bg::after {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(to bottom, rgba(14, 18, 48, .72) 0%, rgba(14, 18, 48, .42) 32%, rgba(14, 18, 48, .5) 100%);
+  background: linear-gradient(to bottom, rgba(0, 32, 51, .72) 0%, rgba(0, 32, 51, .42) 32%, rgba(0, 32, 51, .5) 100%);
 }
 :root[data-mode="dark"] .hero-bg::after {
-  background: linear-gradient(to bottom, rgba(10, 12, 32, .8) 0%, rgba(10, 12, 32, .55) 32%, rgba(10, 12, 32, .62) 100%);
+  background: linear-gradient(to bottom, rgba(0, 20, 31, .8) 0%, rgba(0, 20, 31, .55) 32%, rgba(0, 20, 31, .62) 100%);
 }
 /* Avalehel pole eraldi ülariba: logo ja menüü on pildi peal, menüüpunktid on nupud. */
 /* Avalehel on ülariba pildi peal: sama paigutus mis teistel lehtedel,
@@ -194,7 +195,7 @@ body[data-view="avaleht"] .bar {
   position: absolute; top: 0; left: 0; right: 0; z-index: 5;
   border-top: 0;
   color: #FFF9E6;
-  background: rgba(14, 18, 48, .5);
+  background: rgba(0, 32, 51, .5);
   border-bottom: 1px solid rgba(255, 249, 230, .16);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
