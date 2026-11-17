@@ -179,7 +179,7 @@ p { margin: 0; max-width: 44ch; }
   text-align: center;
 }
 .hero-bg { position: absolute; inset: 0; z-index: -1; margin: 0; background: var(--blue-block); }
-.hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; filter: blur(2px); transform: scale(1.03); }
 .hero-bg::after {
   content: ""; position: absolute; inset: 0;
   background: linear-gradient(to bottom, rgba(14, 18, 48, .72) 0%, rgba(14, 18, 48, .42) 32%, rgba(14, 18, 48, .5) 100%);
@@ -191,20 +191,27 @@ p { margin: 0; max-width: 44ch; }
 body[data-view="avaleht"] .bar { position: absolute; top: 0; left: 0; right: 0; z-index: 5; border-top: 0; color: #FFF9E6; }
 body[data-view="avaleht"] .theme-btn { color: #FFF9E6; }
 body[data-view="avaleht"] .logo-link img { height: 64px; filter: drop-shadow(0 2px 10px rgba(0, 0, 0, .35)); }
-body[data-view="avaleht"] .bar nav { gap: 10px 12px; }
-body[data-view="avaleht"] .bar nav a {
-  padding: 9px 18px;
+body[data-view="avaleht"] .bar nav {
+  justify-self: center;
+  gap: 0;
+  padding: 0 6px;
   border-radius: 999px;
   background: rgba(14, 18, 48, .45);
   border: 1px solid rgba(255, 249, 230, .45);
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
-  transition: background-color .2s ease, border-color .2s ease;
+}
+body[data-view="avaleht"] .bar nav a {
+  margin: 4px 0;
+  padding: 6px 18px;
+  border-radius: 999px;
+  transition: background-color .2s ease;
 }
 body[data-view="avaleht"] .bar nav a::after { display: none; }
-body[data-view="avaleht"] .bar nav a:hover { background: var(--blue-block); border-color: var(--blue-block); }
+body[data-view="avaleht"] .bar nav a:hover { background: var(--blue-block); }
 .hero-copy { display: flex; flex-direction: column; align-items: center; gap: 28px; color: #FFF9E6; }
-.hero h1 { font-size: clamp(2.1rem, 4.4vw, 3.4rem); max-width: 16ch; text-wrap: balance; }
+.hero h1 { font-size: clamp(2.4rem, 5vw, 3.9rem); max-width: 16ch; text-wrap: balance; }
+.hero .btn { font-size: 1.125rem; padding: 16px 30px; border-radius: 12px; }
 .hero-bg, footer { transition: background-color .35s ease; }
 .flavour-mango { background: linear-gradient(120deg, var(--mango) 0%, var(--mango) 45%, var(--berry) 100%); }
 .flavour-banana { background: linear-gradient(120deg, var(--banana) 0%, var(--banana) 45%, var(--berry) 100%); }
@@ -387,8 +394,9 @@ footer .wrap { display: flex; flex-direction: column; gap: 36px; }
   body { font-size: 16px; }
   .wrap { padding-left: 22px; padding-right: 22px; }
   .hero { padding: 190px 22px 56px; }
-  body[data-view="avaleht"] .bar nav { gap: 6px; }
-  body[data-view="avaleht"] .bar nav a { padding: 6px 9px; font-size: .7rem; letter-spacing: .02em; }
+  body[data-view="avaleht"] .bar nav { padding: 0 4px; flex-wrap: nowrap; }
+  body[data-view="avaleht"] .bar nav a { padding: 6px 10px; font-size: .7rem; letter-spacing: .02em; }
+  .hero .btn { font-size: 1.05rem; padding: 15px 26px; }
   body[data-view="avaleht"] .logo-link img { height: 48px; }
   .page { padding-top: 44px; padding-bottom: 64px; }
   .page h2 { margin-bottom: 30px; }
